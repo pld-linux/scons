@@ -9,6 +9,7 @@ Source0:	http://dl.sourceforge.net/scons/%{name}-%{version}.tar.gz
 # Source0-md5:	2d08d41b9de7553729eab45adbd943c0
 URL:		http://www.scons.org/
 Requires:	python >= 1.5
+BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -45,7 +46,7 @@ Builder i/lub Scanner.
 %prep
 %setup -q
 
-%{__perl} -pi -e "s@'lib'@'%{_lib}'@" script/{scons,sconsign}
+%{__perl} -pi -e "s@'lib'@'share'@" script/{scons,sconsign}
 
 %build
 python setup.py build
@@ -56,7 +57,7 @@ rm -rf $RPM_BUILD_ROOT
 python setup.py install \
 	--root=$RPM_BUILD_ROOT \
 	--record=INSTALLED_FILES \
-	--install-lib=%{_libdir}/%{name} \
+	--install-lib=%{py_sitescriptdir} \
 	--install-scripts=%{_bindir}
 
 install -d $RPM_BUILD_ROOT%{_mandir}/man1
@@ -68,5 +69,5 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/*
-%{_libdir}/%{name}
+%{py_sitescriptdir}
 %{_mandir}/man?/*
