@@ -1,19 +1,19 @@
-Summary:	an Open Source software construction tool
+Summary:	An Open Source software construction tool
 Summary(pl):	OpenSourcowe narzêdzie do tworzenia oprogramowania
 Name:		scons
 Version:	0.92
 Release:	1
-Source0:	http://dl.sourceforge.net/sourceforge/scons/%{name}-%{version}.tar.gz
-# Source0-md5:	8e3b76343e6772d56ce7894e67ef1ebf
 License:	MIT, freely distributable
 Group:		Development/Tools
-BuildArch:	noarch
+Source0:	http://dl.sourceforge.net/scons/%{name}-%{version}.tar.gz
+# Source0-md5:	8e3b76343e6772d56ce7894e67ef1ebf
+URL:		http://www.scons.org/
 Requires:	python >= 1.5
-Url:		http://www.scons.org/
+BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
-SCons is an Open Source software construction tool--that is, a build
+SCons is an Open Source software construction tool - that is, a build
 tool; an improved substitute for the classic Make utility; a better
 way to build software. SCons is based on the design which won the
 Software Carpentry build tool design competition in August 2000.
@@ -25,7 +25,23 @@ implicit dependencies, such as files specified on #include lines.
 SCons uses MD5 signatures to rebuild only when the contents of a file
 have really changed, not just when the timestamp has been touched.
 SCons supports side-by-side variant builds, and is easily extended
-with user- defined Builder and/or Scanner objects.
+with user-defined Builder and/or Scanner objects.
+
+%description -l pl
+SCons to wypuszczone z ogólnodostêpnymi ¼ród³ami narzêdzie do
+budowania oprogramowania; jest to ulepszony zamiennik klasycznego
+narzêdzia Make. SCons jest oparte na opracowaniu, które wygra³o
+konkurs Software Carpentry owania w sierpniu 2000.
+
+"Pliki konfiguracyjne" SCons to skrypty Pythona, co eliminuje potrzebê
+uczenia siê sk³adni nowego narzêdzia. SCons zachowuje globalny widok
+wszystkich zale¿no¶ci w drzewie i mo¿e przeszukiwaæ pliki ¼róde³ (lub
+inne) w poszukiwaniu niejawnych zale¿no¶ci, takich jak pliki podane w
+liniach #include. SCons u¿ywa sygnatur MD5, aby przebudowywaæ tylko
+wtedy, kiedy naprawdê siê zmieni³a zawarto¶æ pliku, a nie przy samej
+zmianie czasu modyfikacji. SCons obs³uguje budowanie wariantowe i jest
+³atwo rozszerzalny przez zdefiniowane przez u¿ytkownika obiekty
+Builder i/lub Scanner.
 
 %prep
 %setup -q
@@ -41,7 +57,7 @@ python setup.py install \
 	--install-lib=%{_libdir}/%{name} \
 	--install-scripts=%{_bindir}
 install -d $RPM_BUILD_ROOT%{_mandir}/man1
-install scons*.1 $RPM_BUILD_ROOT%{_mandir}/man1/
+install scons*.1 $RPM_BUILD_ROOT%{_mandir}/man1
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -49,5 +65,5 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/*
-%{_libdir}/%{name}/
+%{_libdir}/%{name}
 %{_mandir}/man?/*
