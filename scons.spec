@@ -8,7 +8,9 @@ Group:		Development/Tools
 Source0:	http://dl.sourceforge.net/scons/%{name}-%{version}.tar.gz
 # Source0-md5:	45b1c346edd8a0970210aeb1e82557c9
 URL:		http://www.scons.org/
-Requires:	python >= 1.5
+BuildRequires:	python-devel >= 1.6
+BuildRequires:	sed >= 4.0
+Requires:	python >= 1.5.2
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -46,9 +48,8 @@ Builder i/lub Scanner.
 %prep
 %setup -q
 
-%{__perl} -pi -e "s@'lib'@'share'@" script/{scons,sconsign}
-
 %build
+%{__sed} -i "s,'lib','share',g" script/{scons,sconsign}
 python setup.py build
 
 %install
