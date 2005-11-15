@@ -2,17 +2,16 @@ Summary:	An Open Source software construction tool
 Summary(pl):	OpenSourcowe narzêdzie do tworzenia oprogramowania
 Name:		scons
 Version:	0.96.91
-Release:	0.1
+Release:	1
 License:	MIT, freely distributable
 Group:		Development/Tools
 Source0:	http://dl.sourceforge.net/scons/%{name}-%{version}.tar.gz
 # Source0-md5:	af5bd40fcc0e8d0b7c7210d513991802
 URL:		http://www.scons.org/
-BuildRequires:	python >= 1.6
 BuildRequires:	python-devel >= 1.6
-BuildRequires:	python-modules >= 1.6
+BuildRequires:	rpm-pythonprov
 BuildRequires:	sed >= 4.0
-Requires:	python >= 1.5.2
+%pyrequires_eq	python-modules
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -49,22 +48,23 @@ Builder i/lub Scanner.
 
 %prep
 %setup -q
+%{__sed} -i "s,'lib','share',g" script/{scons,sconsign}
 
 %build
-%{__sed} -i "s,'lib','share',g" script/{scons,sconsign}
 python setup.py build
 
 %install
 rm -rf $RPM_BUILD_ROOT
 
 python setup.py install \
+	--no-version-script \
+	--optimize=2 \
 	--root=$RPM_BUILD_ROOT \
-	--record=INSTALLED_FILES \
+	--install-data=%{_datadir} \
 	--install-lib=%{py_sitescriptdir} \
 	--install-scripts=%{_bindir}
 
-install -d $RPM_BUILD_ROOT%{_mandir}/man1
-install scons*.1 $RPM_BUILD_ROOT%{_mandir}/man1
+find $RPM_BUILD_ROOT%{py_sitescriptdir} -name \*.py -exec rm -f {} \;
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -73,4 +73,4 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/*
 %{py_sitescriptdir}/*
-%{_mandir}/man?/*
+%{_mandir}/man1/*
