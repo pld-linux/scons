@@ -12,6 +12,7 @@ BuildRequires:	python-devel >= 1.6
 BuildRequires:	rpm-pythonprov
 BuildRequires:	sed >= 4.0
 %pyrequires_eq	python-modules
+Requires:	python
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
