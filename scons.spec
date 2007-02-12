@@ -1,5 +1,5 @@
 Summary:	An Open Source software construction tool
-Summary(pl):	OpenSourcowe narzêdzie do tworzenia oprogramowania
+Summary(pl.UTF-8):   OpenSourcowe narzÄ™dzie do tworzenia oprogramowania
 Name:		scons
 Version:	0.96.94
 Release:	1
@@ -31,20 +31,20 @@ have really changed, not just when the timestamp has been touched.
 SCons supports side-by-side variant builds, and is easily extended
 with user-defined Builder and/or Scanner objects.
 
-%description -l pl
-SCons to wypuszczone z ogólnodostêpnymi ¼ród³ami narzêdzie do
+%description -l pl.UTF-8
+SCons to wypuszczone z ogÃ³lnodostÄ™pnymi ÅºrÃ³dÅ‚ami narzÄ™dzie do
 budowania oprogramowania; jest to ulepszony zamiennik klasycznego
-narzêdzia Make. SCons jest oparte na opracowaniu, które wygra³o
+narzÄ™dzia Make. SCons jest oparte na opracowaniu, ktÃ³re wygraÅ‚o
 konkurs Software Carpentry owania w sierpniu 2000.
 
-"Pliki konfiguracyjne" SCons to skrypty Pythona, co eliminuje potrzebê
-uczenia siê sk³adni nowego narzêdzia. SCons zachowuje globalny widok
-wszystkich zale¿no¶ci w drzewie i mo¿e przeszukiwaæ pliki ¼róde³ (lub
-inne) w poszukiwaniu niejawnych zale¿no¶ci, takich jak pliki podane w
-liniach #include. SCons u¿ywa sygnatur MD5, aby przebudowywaæ tylko
-wtedy, kiedy naprawdê siê zmieni³a zawarto¶æ pliku, a nie przy samej
-zmianie czasu modyfikacji. SCons obs³uguje budowanie wariantowe i jest
-³atwo rozszerzalny przez zdefiniowane przez u¿ytkownika obiekty
+"Pliki konfiguracyjne" SCons to skrypty Pythona, co eliminuje potrzebÄ™
+uczenia siÄ™ skÅ‚adni nowego narzÄ™dzia. SCons zachowuje globalny widok
+wszystkich zaleÅ¼noÅ›ci w drzewie i moÅ¼e przeszukiwaÄ‡ pliki ÅºrÃ³deÅ‚ (lub
+inne) w poszukiwaniu niejawnych zaleÅ¼noÅ›ci, takich jak pliki podane w
+liniach #include. SCons uÅ¼ywa sygnatur MD5, aby przebudowywaÄ‡ tylko
+wtedy, kiedy naprawdÄ™ siÄ™ zmieniÅ‚a zawartoÅ›Ä‡ pliku, a nie przy samej
+zmianie czasu modyfikacji. SCons obsÅ‚uguje budowanie wariantowe i jest
+Å‚atwo rozszerzalny przez zdefiniowane przez uÅ¼ytkownika obiekty
 Builder i/lub Scanner.
 
 %prep
