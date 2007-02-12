@@ -1,5 +1,5 @@
 Summary:	An Open Source software construction tool
-Summary(pl.UTF-8):   OpenSourcowe narzędzie do tworzenia oprogramowania
+Summary(pl.UTF-8):	OpenSourcowe narzędzie do tworzenia oprogramowania
 Name:		scons
 Version:	0.96.94
 Release:	1
