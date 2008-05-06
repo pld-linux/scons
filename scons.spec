@@ -1,12 +1,12 @@
 Summary:	An Open Source software construction tool
 Summary(pl.UTF-8):	OpenSourcowe narzędzie do tworzenia oprogramowania
 Name:		scons
-Version:	0.98.2
+Version:	0.98.3
 Release:	1
 License:	MIT, freely distributable
 Group:		Development/Tools
 Source0:	http://dl.sourceforge.net/scons/%{name}-%{version}.tar.gz
-# Source0-md5:	35479899ef4199c42ca4e068c99c586f
+# Source0-md5:	0b81b8338d356dcef3b3923d9602dfde
 URL:		http://www.scons.org/
 BuildRequires:	python-devel >= 1.6
 BuildRequires:	rpm-pythonprov
