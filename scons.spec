@@ -1,12 +1,14 @@
+%define	_snap	d20081104
 Summary:	An Open Source software construction tool
 Summary(pl.UTF-8):	OpenSourcowe narzędzie do tworzenia oprogramowania
 Name:		scons
 Version:	1.1.0
-Release:	1
+Release:	0.%{_snap}.1
+Epoch:		1
 License:	MIT, freely distributable
 Group:		Development/Tools
-Source0:	http://dl.sourceforge.net/scons/%{name}-%{version}.tar.gz
-# Source0-md5:	148ae2c3a63f730021578a7abdaa2a65
+Source0:	http://dl.sourceforge.net/scons/%{name}-%{version}.%{_snap}.tar.gz
+# Source0-md5:	2923dc305a7c4444903c5159ddb499b5
 URL:		http://www.scons.org/
 BuildRequires:	python-devel >= 1.6
 BuildRequires:	rpm-pythonprov
@@ -49,7 +51,7 @@ zmianie czasu modyfikacji. SCons obsługuje budowanie wariantowe i jest
 Builder i/lub Scanner.
 
 %prep
-%setup -q
+%setup -q -n %{name}-%{version}.%{_snap}
 %{__sed} -i -e "s,'lib','share',g" script/{scons,sconsign}
 
 %build
