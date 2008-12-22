@@ -50,7 +50,7 @@ zmianie czasu modyfikacji. SCons obsługuje budowanie wariantowe i jest
 Builder i/lub Scanner.
 
 %prep
-%setup -q -n %{name}-%{version}
+%setup -q
 %{__sed} -i -e "s,'lib','share',g" script/{scons,sconsign}
 
 %build
