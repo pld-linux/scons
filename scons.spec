@@ -1,4 +1,3 @@
-%define	_snap	d20081207
 Summary:	An Open Source software construction tool
 Summary(pl.UTF-8):	OpenSourcowe narzędzie do tworzenia oprogramowania
 Name:		scons
