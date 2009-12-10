@@ -2,7 +2,7 @@ Summary:	An Open Source software construction tool
 Summary(pl.UTF-8):	OpenSourcowe narzędzie do tworzenia oprogramowania
 Name:		scons
 Version:	1.2.0
-Release:	1
+Release:	2
 License:	MIT, freely distributable
 Group:		Development/Tools
 Source0:	http://dl.sourceforge.net/scons/%{name}-%{version}.tar.gz
@@ -51,6 +51,7 @@ Builder i/lub Scanner.
 %prep
 %setup -q
 %{__sed} -i -e "s,'lib','share',g" script/{scons,sconsign}
+%{__sed} -i -e '1s,#!.*python,#!%{__python},' script/scons*
 
 %build
 %{__python} setup.py build
