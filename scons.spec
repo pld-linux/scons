@@ -1,4 +1,4 @@
-%define	_snap	d20090919
+%define	_snap	d20100117
 Summary:	An Open Source software construction tool
 Summary(pl.UTF-8):	OpenSourcowe narzędzie do tworzenia oprogramowania
 Name:		scons
@@ -7,7 +7,7 @@ Release:	0.%{_snap}.1
 License:	MIT, freely distributable
 Group:		Development/Tools
 Source0:	http://dl.sourceforge.net/scons/%{name}-%{version}.%{_snap}.tar.gz
-# Source0-md5:	d95c3749438e51db592b854683083965
+# Source0-md5:	d8a9765f63a489bf827b582bc303538c
 URL:		http://www.scons.org/
 BuildRequires:	python-devel >= 1.6
 BuildRequires:	rpm-pythonprov
