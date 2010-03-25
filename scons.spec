@@ -1,12 +1,12 @@
 Summary:	An Open Source software construction tool
 Summary(pl.UTF-8):	OpenSourcowe narzędzie do tworzenia oprogramowania
 Name:		scons
-Version:	1.2.0
-Release:	2
+Version:	1.3.0
+Release:	1
 License:	MIT, freely distributable
 Group:		Development/Tools
-Source0:	http://dl.sourceforge.net/scons/%{name}-%{version}.tar.gz
-# Source0-md5:	53b6aa7281811717a57598e319441cf7
+Source0:	http://downloads.sourceforge.net/scons/%{name}-%{version}.tar.gz
+# Source0-md5:	ad6838c867abd2ad5bf371b353d594f7
 URL:		http://www.scons.org/
 BuildRequires:	python-devel >= 1.6
 BuildRequires:	rpm-pythonprov
@@ -76,6 +76,9 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 #LICENSE.txt must be added (read LICENSE.txt file)
 %doc CHANGES.txt LICENSE.txt README.txt RELEASE.txt
-%attr(755,root,root) %{_bindir}/*
-%{py_sitescriptdir}/*
-%{_mandir}/man1/*
+%attr(755,root,root) %{_bindir}/scons*
+%{py_sitescriptdir}/SCons
+%{_mandir}/man1/scons*.1*
+%if "%{py_ver}" > "2.4"
+%{py_sitescriptdir}/scons-1.3.0-py2.6.egg-info
+%endif
