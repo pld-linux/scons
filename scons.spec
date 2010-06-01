@@ -1,13 +1,13 @@
-%define		_alpha	20100508
+%define		_beta	20100531
 Summary:	An Open Source software construction tool
 Summary(pl.UTF-8):	OpenSourcowe narzędzie do tworzenia oprogramowania
 Name:		scons
 Version:	2.0.0
-Release:	0.%{_alpha}.1
+Release:	0.%{_beta}.1
 License:	MIT, freely distributable
 Group:		Development/Tools
-Source0:	http://downloads.sourceforge.net/scons/%{name}-%{version}.alpha.%{_alpha}.tar.gz
-# Source0-md5:	a77920d76f3eb87cbc74a214708fb9f1
+Source0:	http://downloads.sourceforge.net/scons/%{name}-%{version}.beta.%{_beta}.tar.gz
+# Source0-md5:	8d29c33809b5b6b5549fc9b96fc2ddcb
 URL:		http://www.scons.org/
 BuildRequires:	python-devel >= 1.6
 BuildRequires:	rpm-pythonprov
@@ -50,7 +50,7 @@ zmianie czasu modyfikacji. SCons obsługuje budowanie wariantowe i jest
 Builder i/lub Scanner.
 
 %prep
-%setup -q -n %{name}-%{version}.alpha.%{_alpha}
+%setup -q -n %{name}-%{version}.beta.%{_beta}
 %{__sed} -i -e "s,'lib','share',g" script/{scons,sconsign}
 %{__sed} -i -e '1s,#!.*python,#!%{__python},' script/scons*
 
