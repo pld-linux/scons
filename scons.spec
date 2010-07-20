@@ -1,13 +1,13 @@
-%define		_beta	20100605
+%define		_beta	20100627
 Summary:	An Open Source software construction tool
 Summary(pl.UTF-8):	OpenSourcowe narzędzie do tworzenia oprogramowania
 Name:		scons
-Version:	2.0.0
+Version:	2.0.1
 Release:	0.%{_beta}.1
 License:	MIT, freely distributable
 Group:		Development/Tools
 Source0:	http://downloads.sourceforge.net/scons/%{name}-%{version}.beta.%{_beta}.tar.gz
-# Source0-md5:	deb1b2b677c88b844847d08ab8386d39
+# Source0-md5:	0d315f985413a2cfdd015d525ff2b3a3
 URL:		http://www.scons.org/
 BuildRequires:	python-devel >= 1.6
 BuildRequires:	rpm-pythonprov
