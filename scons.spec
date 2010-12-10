@@ -1,12 +1,13 @@
+%define		_alpha	alpha.20101125
 Summary:	An Open Source software construction tool
 Summary(pl.UTF-8):	OpenSourcowe narzędzie do tworzenia oprogramowania
 Name:		scons
-Version:	2.0.1
-Release:	1
+Version:	2.1.0
+Release:	0.%{_alpha}.1
 License:	MIT, freely distributable
 Group:		Development/Tools
-Source0:	http://downloads.sourceforge.net/scons/%{name}-%{version}.tar.gz
-# Source0-md5:	beca648b894cdbf85383fffc79516d18
+Source0:	http://downloads.sourceforge.net/scons/%{name}-%{version}.%{_alpha}.tar.gz
+# Source0-md5:	67b1cac7526d12b11ff9ddfa61b74bfd
 URL:		http://www.scons.org/
 BuildRequires:	python-devel >= 1.6
 BuildRequires:	rpm-pythonprov
@@ -49,7 +50,7 @@ zmianie czasu modyfikacji. SCons obsługuje budowanie wariantowe i jest
 Builder i/lub Scanner.
 
 %prep
-%setup -q
+%setup -q -n %{name}-%{version}.%{_alpha}
 %{__sed} -i -e "s,'lib','share',g" script/{scons,sconsign}
 %{__sed} -i -e '1s,#!.*python,#!%{__python},' script/scons*
 
@@ -67,7 +68,7 @@ rm -rf $RPM_BUILD_ROOT
 	--install-lib=%{py_sitescriptdir} \
 	--install-scripts=%{_bindir}
 
-find $RPM_BUILD_ROOT%{py_sitescriptdir} -name \*.py -exec rm -f {} \;
+find $RPM_BUILD_ROOT%{py_sitescriptdir} -name \*.py -exec %{__rm} {} \;
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -80,5 +81,5 @@ rm -rf $RPM_BUILD_ROOT
 %{py_sitescriptdir}/SCons
 %{_mandir}/man1/scons*.1*
 %if "%{py_ver}" > "2.4"
-%{py_sitescriptdir}/scons-2.0.1-py*.egg-info
+%{py_sitescriptdir}/scons-%{version}.%{_alpha}-py*.egg-info
 %endif
