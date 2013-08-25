@@ -1,19 +1,19 @@
 Summary:	An Open Source software construction tool
 Summary(pl.UTF-8):	OpenSourcowe narzędzie do tworzenia oprogramowania
 Name:		scons
-Version:	2.1.0
+Version:	2.3.0
 Release:	1
-License:	MIT, freely distributable
+License:	MIT
 Group:		Development/Tools
 Source0:	http://downloads.sourceforge.net/scons/%{name}-%{version}.tar.gz
-# Source0-md5:	47daf989e303a045b76c11236df719df
+# Source0-md5:	083ce5624d6adcbdaf2526623f456ca9
 URL:		http://www.scons.org/
-BuildRequires:	python-devel >= 1.6
+BuildRequires:	python-devel >= 1:2.4
 BuildRequires:	rpm-pythonprov
 BuildRequires:	sed >= 4.0
 %pyrequires_eq	python-modules
-Requires:	python
-Requires:	python-devel-tools
+Requires:	python >= 1:2.4
+Requires:	python-devel-tools >= 1:2.4
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -50,6 +50,7 @@ Builder i/lub Scanner.
 
 %prep
 %setup -q
+
 %{__sed} -i -e "s,'lib','share',g" script/{scons,sconsign}
 %{__sed} -i -e '1s,#!.*python,#!%{__python},' script/scons*
 
@@ -74,7 +75,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-#LICENSE.txt must be added (read LICENSE.txt file)
+# LICENSE.txt must be packaged (see LICENSE.txt file)
 %doc CHANGES.txt LICENSE.txt README.txt RELEASE.txt
 %attr(755,root,root) %{_bindir}/scons*
 %{py_sitescriptdir}/SCons
