@@ -1,19 +1,19 @@
 Summary:	An Open Source software construction tool
 Summary(pl.UTF-8):	OpenSourcowe narzędzie do tworzenia oprogramowania
 Name:		scons
-Version:	3.0.5
+Version:	3.1.2
 Release:	1
 License:	MIT
 Group:		Development/Tools
 Source0:	http://downloads.sourceforge.net/scons/%{name}-%{version}.tar.gz
-# Source0-md5:	9f9c163e8bd48cf8cd92f03e85ca6395
+# Source0-md5:	77b2f8ac2661b7a4fad51c17cb7f1b25
 URL:		http://www.scons.org/
-BuildRequires:	python-devel >= 1:2.4
+BuildRequires:	python-devel >= 1:2.7
 BuildRequires:	rpm-pythonprov
 BuildRequires:	sed >= 4.0
-%pyrequires_eq	python-modules
-Requires:	python >= 1:2.4
-Requires:	python-devel-tools >= 1:2.4
+Requires:	python >= 1:2.7
+Requires:	python-modules >= 1:2.7
+Requires:	python-devel-tools >= 1:2.7
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -52,7 +52,7 @@ Builder i/lub Scanner.
 %setup -q
 
 %{__sed} -i -e "s,'lib','share',g" script/{scons,sconsign}
-%{__sed} -i -e '1s,#!.*python,#!%{__python},' script/scons*
+%{__sed} -i -e '1s,/usr/bin/env python$,%{__python},' script/scons*
 
 %build
 %{__python} setup.py build
@@ -68,7 +68,7 @@ rm -rf $RPM_BUILD_ROOT
 	--install-lib=%{py_sitescriptdir} \
 	--install-scripts=%{_bindir}
 
-find $RPM_BUILD_ROOT%{py_sitescriptdir} -name \*.py -exec %{__rm} {} \;
+%py_postclean
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -79,7 +79,5 @@ rm -rf $RPM_BUILD_ROOT
 %doc CHANGES.txt LICENSE.txt README.txt RELEASE.txt
 %attr(755,root,root) %{_bindir}/scons*
 %{py_sitescriptdir}/SCons
-%{_mandir}/man1/scons*.1*
-%if "%{py_ver}" > "2.4"
 %{py_sitescriptdir}/scons-%{version}-py*.egg-info
-%endif
+%{_mandir}/man1/scons*.1*
