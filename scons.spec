@@ -1,19 +1,21 @@
 Summary:	An Open Source software construction tool
 Summary(pl.UTF-8):	OpenSourcowe narzędzie do tworzenia oprogramowania
 Name:		scons
-Version:	3.1.2
+Version:	4.3.0
 Release:	1
 License:	MIT
 Group:		Development/Tools
-Source0:	http://downloads.sourceforge.net/scons/%{name}-%{version}.tar.gz
-# Source0-md5:	77b2f8ac2661b7a4fad51c17cb7f1b25
-URL:		http://www.scons.org/
-BuildRequires:	python-devel >= 1:2.7
+Source0:	https://downloads.sourceforge.net/scons/SCons-%{version}.tar.gz
+# Source0-md5:	d964bbfb2b408cc87b6c0d9273374ef6
+URL:		https://www.scons.org/
+BuildRequires:	python3-devel >= 1:3.5
+BuildRequires:	python3-setuptools
 BuildRequires:	rpm-pythonprov
+BuildRequires:	rpmbuild(macros) >= 1.714
 BuildRequires:	sed >= 4.0
-Requires:	python >= 1:2.7
-Requires:	python-modules >= 1:2.7
-Requires:	python-devel-tools >= 1:2.7
+Requires:	python3 >= 1:3.5
+Requires:	python3-modules >= 1:3.5
+Requires:	python3-devel-tools >= 1:3.5
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -49,35 +51,30 @@ zmianie czasu modyfikacji. SCons obsługuje budowanie wariantowe i jest
 Builder i/lub Scanner.
 
 %prep
-%setup -q
-
-%{__sed} -i -e "s,'lib','share',g" script/{scons,sconsign}
-%{__sed} -i -e '1s,/usr/bin/env python$,%{__python},' script/scons*
+%setup -q -n SCons-%{version}
 
 %build
-%{__python} setup.py build
+%py3_build
 
 %install
 rm -rf $RPM_BUILD_ROOT
 
-%{__python} setup.py install \
-	--no-version-script \
-	--optimize=2 \
-	--root=$RPM_BUILD_ROOT \
-	--install-data=%{_datadir} \
-	--install-lib=%{py_sitescriptdir} \
-	--install-scripts=%{_bindir}
+%py3_install \
+	--install-data %{_mandir}/man1
 
-%py_postclean
+# program not installed
+%{__rm} $RPM_BUILD_ROOT%{_mandir}/man1/scons-time.1*
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-# LICENSE.txt must be packaged (see LICENSE.txt file)
-%doc CHANGES.txt LICENSE.txt README.txt RELEASE.txt
-%attr(755,root,root) %{_bindir}/scons*
-%{py_sitescriptdir}/SCons
-%{py_sitescriptdir}/scons-%{version}-py*.egg-info
-%{_mandir}/man1/scons*.1*
+%doc LICENSE README.rst
+%attr(755,root,root) %{_bindir}/scons
+%attr(755,root,root) %{_bindir}/scons-configure-cache
+%attr(755,root,root) %{_bindir}/sconsign
+%{py3_sitescriptdir}/SCons
+%{py3_sitescriptdir}/SCons-%{version}-py*.egg-info
+%{_mandir}/man1/scons.1*
+%{_mandir}/man1/sconsign.1*
