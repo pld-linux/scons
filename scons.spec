@@ -1,20 +1,20 @@
 Summary:	An Open Source software construction tool
 Summary(pl.UTF-8):	OpenSourcowe narzędzie do tworzenia oprogramowania
 Name:		scons
-Version:	4.4.0
-Release:	2
+Version:	4.9.1
+Release:	1
 License:	MIT
 Group:		Development/Tools
 Source0:	https://downloads.sourceforge.net/scons/SCons-%{version}.tar.gz
-# Source0-md5:	056b141b420583e8faef8b1c64bc43cf
+# Source0-md5:	b46e03361ec0c48b295fc35d7dbba475
 URL:		https://www.scons.org/
-BuildRequires:	python3-devel >= 1:3.6
+BuildRequires:	python3-devel >= 1:3.7
 BuildRequires:	python3-setuptools
 BuildRequires:	rpm-pythonprov
 BuildRequires:	rpmbuild(macros) >= 1.714
-Requires:	python3 >= 1:3.6
-Requires:	python3-modules >= 1:3.6
-Requires:	python3-devel-tools >= 1:3.6
+Requires:	python3 >= 1:3.7
+Requires:	python3-modules >= 1:3.7
+Requires:	python3-devel-tools >= 1:3.7
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -50,7 +50,7 @@ zmianie czasu modyfikacji. SCons obsługuje budowanie wariantowe i jest
 Builder i/lub Scanner.
 
 %prep
-%setup -q -n SCons-%{version}
+%setup -q
 
 %build
 %py3_build
@@ -58,11 +58,10 @@ Builder i/lub Scanner.
 %install
 rm -rf $RPM_BUILD_ROOT
 
-%py3_install \
-	--install-data %{_mandir}/man1
+%py3_install
 
-# program not installed
-%{__rm} $RPM_BUILD_ROOT%{_mandir}/man1/scons-time.1*
+install -d $RPM_BUILD_ROOT%{_mandir}/man1
+cp -p scons.1 sconsign.1 $RPM_BUILD_ROOT%{_mandir}/man1
 
 %clean
 rm -rf $RPM_BUILD_ROOT
